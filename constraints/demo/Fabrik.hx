@@ -1,11 +1,11 @@
 package constraints.demo;
-import khaMath.Vector4;
+import geom.Tpoint;
 // reference
 // Johnathon Selstad
 // @JohnSelstad
 // https://git.io/fjf1N
 class Fabrik{
-    public var joints    = new Array<Vector4>();
+    public var joints    = new Array<Apoint4>();
     var points:   Int;
     var distance: Float;
     var x: Float;
@@ -15,10 +15,10 @@ class Fabrik{
         y = y_;
         distance = distance_;
         points   = points_;
-        for( i in 0...points ) joints[ i ] = new Vector4( x + i*distance, y, 0 );
+        for( i in 0...points ) joints[ i ] = new Apoint4( { x: x + i*distance, y: y, z: 0., w: 1. } );
     }
     inline
-    public function update( anchor: Vector4, render: ( i: Int, joint: Vector4 ) -> Void  ){
+    public function update( anchor: Apoint4, render: ( i: Int, joint: Apoint4 ) -> Void  ){
         var joint = joints[0];
         joint.x = anchor.x;
         joint.y = anchor.y;

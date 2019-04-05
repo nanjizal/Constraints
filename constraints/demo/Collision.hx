@@ -1,11 +1,11 @@
 package constraints.demo;
-import khaMath.Vector4;
+import geom.Tpoint;
 // reference
 // Johnathon Selstad
 // @JohnSelstad
 // https://git.io/fjf1x
 class Collision{
-    var joints      = new Array<Vector4>();
+    var joints      = new Array<Apoint4>();
     var points:     Int;
     var distance:   Float;
     var circleSize: Float;
@@ -23,35 +23,35 @@ class Collision{
         for( i in 0...points ) {
             var x0 = x/2 + collisionArea*Math.random();
             var y0 = y/2 + collisionArea*Math.random();
-            joints[ i ] = new Vector4( x0, y0, 0 );
+            joints[ i ] = new Apoint4( { x: x0, y: y0, z: 0., w: 1. } );
         }
     }
     inline
-    public function update( anchor: Vector4, render: ( i: Int, joint: Vector4 ) -> Void  ){
+    public function update( anchor: Apoint4, render: ( i: Int, joint: Apoint4 ) -> Void  ){
         // separate from mouse
-        var joint: Vector4;
+        var joint: Apoint4;
         var mouseEdge = 2;
         var radius = distance + mouseEdge + circleSize/2;
         for( i in 0...points ) {
             joint = joints[ i ];
-            var toNext = anchor.sub( joint );
-            if( toNext.length < radius ){
-                toNext.length = radius;
-                var offset = anchor.sub( joint ).sub( toNext );
-                joints[ i ] = joint.add( offset );
+            var toNext = anchor - joint;
+            if( toNext.magnitude < radius ){
+                toNext.magnitude = radius;
+                var offset = ( anchor - joint ) - toNext ;
+                joints[ i ] = joint + offset;
             }
         }
         // separate balls
-        var other: Vector4;
+        var other: Apoint4;
         for( i in 0...points ) for( j in i...points ) {
             joint = joints[ i ];
             other = joints[ j ];
-            var toNext = other.sub( joint );
-            if( toNext.length < circleSize*2 ){
-                toNext.length = circleSize*2;
-                var offset = other.sub( joint ).sub( toNext ).mult( 0.5 );
-                joints[ i ] = joint.add( offset );
-                joints[ j ] = other.sub( offset );
+            var toNext = other - joint;
+            if( toNext.magnitude < circleSize*2 ){
+                toNext.magnitude = circleSize*2;
+                var offset = ( other - joint ) -  0.5 * toNext ;
+                joints[ i ] = joint + offset ;
+                joints[ j ] = other - offset;
             }
         }
         for( i in 0...points ) render( i, joints[ i ] );
