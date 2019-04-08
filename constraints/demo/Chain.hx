@@ -1,20 +1,21 @@
 package constraints.demo;
 import geom.Tpoint;
+import geom.Matrix1x4;
 // reference
 // Johnathon Selstad
 // @JohnSelstad
 // https://git.io/fjfKH
 class Chain{
-    public var joints    = new Array<Apoint4>();
+    public var joints    = new Array<Matrix1x4>();
     var points:   Int;
     var distance: Float;
     public function new( x: Float, y: Float, points_: Int, distance_: Float ){
         distance = distance_;
         points   = points_;
-        for( i in 0...points ) joints[ i ] = new Apoint4( {x: x + i*distance, y: y, z: 0., w: 1. } );
+        for( i in 0...points ) joints[ i ] = new Matrix1x4( {x: x + i*distance, y: y, z: 0., w: 1. } );
     }
     inline
-    public function update( anchor: Apoint4, render: ( i: Int, joint: Apoint4 ) -> Void  ){
+    public function update( anchor: Matrix1x4, render: ( i: Int, joint: Matrix1x4 ) -> Void  ){
         var joint = joints[ 0 ];
         joint.x = anchor.x;
         joint.y = anchor.y;

@@ -1,11 +1,12 @@
 package constraints.demo;
 import geom.Tpoint;
+import geom.Matrix1x4;
 // reference
 // Johnathon Selstad
 // @JohnSelstad
 // https://git.io/fjf1x
 class Collision{
-    var joints      = new Array<Apoint4>();
+    var joints      = new Array<Matrix1x4>();
     var points:     Int;
     var distance:   Float;
     var circleSize: Float;
@@ -27,7 +28,7 @@ class Collision{
         }
     }
     inline
-    public function update( anchor: Apoint4, render: ( i: Int, joint: Apoint4 ) -> Void  ){
+    public function update( anchor: Matrix1x4, render: ( i: Int, joint: Matrix1x4 ) -> Void  ){
         // separate from mouse
         var joint: Apoint4;
         var mouseEdge = 2;
