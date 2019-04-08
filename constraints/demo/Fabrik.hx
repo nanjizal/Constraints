@@ -19,7 +19,7 @@ class Fabrik{
         for( i in 0...points ) joints[ i ] = new Matrix1x4( { x: x + i*distance, y: y, z: 0., w: 1. } );
     }
     inline
-    public function update( anchor: Matirx1x4, render: ( i: Int, joint: Matrix1x4 ) -> Void  ){
+    public function update( anchor: Matrix1x4, render: ( i: Int, joint: Matrix1x4 ) -> Void  ){
         var joint = joints[0];
         joint.x = anchor.x;
         joint.y = anchor.y;
