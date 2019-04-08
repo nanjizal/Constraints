@@ -16,7 +16,6 @@ class Inner{
         var toNext = anchor - point;
         if( toNext.magnitude > distance ) {
             point = point.constrainDistance( anchor, distance );
-            trace( point.x + ' ' + point.y );
         }
     }
 }
