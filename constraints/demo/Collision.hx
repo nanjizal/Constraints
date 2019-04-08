@@ -1,5 +1,4 @@
 package constraints.demo;
-import geom.Tpoint;
 import geom.Matrix1x4;
 // reference
 // Johnathon Selstad
@@ -30,7 +29,7 @@ class Collision{
     inline
     public function update( anchor: Matrix1x4, render: ( i: Int, joint: Matrix1x4 ) -> Void  ){
         // separate from mouse
-        var joint: Apoint4;
+        var joint: Matrix1x4;
         var mouseEdge = 2;
         var radius = distance + mouseEdge + circleSize/2;
         for( i in 0...points ) {
