@@ -24,7 +24,7 @@ class Collision{
         for( i in 0...points ) {
             var x0 = x/2 + collisionArea*Math.random();
             var y0 = y/2 + collisionArea*Math.random();
-            joints[ i ] = new Apoint4( { x: x0, y: y0, z: 0., w: 1. } );
+            joints[ i ] = new Matrix1x4( { x: x0, y: y0, z: 0., w: 1. } );
         }
     }
     inline
