@@ -1,6 +1,6 @@
 package constraints.demo;
 import geom.Tpoint;
-ipmort geom.Matrix1x4;
+import geom.Matrix1x4;
 // reference
 // Johnathon Selstad
 // @JohnSelstad
