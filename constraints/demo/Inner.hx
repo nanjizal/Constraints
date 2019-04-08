@@ -9,7 +9,7 @@ class Inner{
     public var point:    Matrix1x4;
     var distance: Float;
     public function new( x: Float, y: Float, distance_: Float ){
-        point = new Apoint4( {x:x, y:y, z:0., w:1.} );
+        point = new Matrix1x4( {x:x, y:y, z:0., w:1.} );
         distance = distance_;
     }
     inline
