@@ -42,7 +42,7 @@ class Collision{
             }
         }
         // separate balls
-        var other: Apoint4;
+        var other: Matrix1x4;
         for( i in 0...points ) for( j in i...points ) {
             joint = joints[ i ];
             other = joints[ j ];
